@@ -11,10 +11,11 @@ import { Http} from '@angular/http';
 export class AppComponent implements OnInit{
 
   title = 'app';
+  public porcentagem = 0;
   public dimensions = {
-      height: 0,
-      length:0,
-      width:0
+      height: 2,
+      length: 3,
+      width: 5
   }
 
   constructor(public mainService:MainService) { 
@@ -26,10 +27,15 @@ export class AppComponent implements OnInit{
    return this.mainService.post(this.dimensions)    
   }
 
+  get(){
+    return this.mainService.get()
+  }
+
   send(){
-    this.post().then( (res) =>{
-      console.log(res)
-    })
+    this.mainService.post(JSON.stringify(this.dimensions)).then((res) =>{
+      this.porcentagem = res.porcentagem
+      console.log(this.porcentagem)
+    });
   }
 
 }

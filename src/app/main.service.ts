@@ -10,10 +10,27 @@ export class MainService {
   };
 
   post(param: any): Promise<any> {    
-    return this.http
-      .post('http://localhost:8000/users', param)
+    var params = 'dimensions=' + param;
+    var cabe = new Headers();
+    cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.post('http://localhost:3000', 
+    params, {
+             headers : cabe
+            })
+            .toPromise()
+            .then(res=> res.json());
+    
+ }
+
+
+  get(){
+    return this.http.get('http://localhost:3000')
       .toPromise()
-      .then()
-      .catch();
+      .then(this.parseData)
   }
+
+  parseData(response){
+    return JSON.parse(response['_body'])
+  }
+
 }
