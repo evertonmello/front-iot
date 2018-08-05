@@ -5,17 +5,17 @@
   </h1>
   <img src="../assets/img/example.jpg" alt="">
   <h1>Digite as dimensões do seu espaço ou recipiente</h1>
-  <div>
+  <div style="display: -webkit-inline-box;">
     <h1>Altura</h1>
-    <input type="number"  [(ngModel)]="dimensions.height">    
+    <input type="number" style="margin-top: 30px; margin-right: 5px" [(ngModel)]="dimensions.height">    
     <h1>Comprimento</h1>
-    <input type="number" [(ngModel)]="dimensions.length">
+    <input type="number" style="margin-top: 30px; margin-right: 5px"[(ngModel)]="dimensions.length">
     <h1>Largura</h1>
-    <input type="number" [(ngModel)]="dimensions.width">
+    <input type="number" style="margin-top: 30px; margin-right: 5px"[(ngModel)]="dimensions.width">
   </div>
   
   <h1>PORCENTAGEM DE PREENCHIENTO</h1>
-  <h1>{{porcentagem}}%</h1>
+  <h1>{{porcentagem | number}}%</h1>
   
   <button style="margin-top: 15px; width: 100px;" (click)="send()">Ok</button>
 </div>
