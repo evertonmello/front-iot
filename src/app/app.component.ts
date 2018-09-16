@@ -33,8 +33,15 @@ export class AppComponent implements OnInit{
 
   send(){
     this.mainService.post(JSON.stringify(this.dimensions)).then((res) =>{
-      this.porcentagem = res.porcentagem
-      console.log(this.porcentagem)
+      if(res.porcentagem < 1){
+        this.porcentagem = res.porcentagem
+      }else{
+        this.porcentagem = res.porcentagem
+
+      }
+      console.log(res)
+
+
     });
   }
 
